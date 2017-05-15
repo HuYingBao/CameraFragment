@@ -61,7 +61,7 @@ public class RecordButton extends ImageButton {
                     return;
                 } else lastClickTime = System.currentTimeMillis();
 
-                if(listener != null) {
+                if (listener != null) {
                     listener.onRecordButtonClicked();
                 }
             }
@@ -96,17 +96,17 @@ public class RecordButton extends ImageButton {
         this.listener = listener;
     }
 
-    public void displayVideoRecordStateReady(){
+    public void displayVideoRecordStateReady() {
         setImageDrawable(startRecordDrawable);
         setIconPadding(iconPadding);
     }
 
-    public void displayVideoRecordStateInProgress(){
+    public void displayVideoRecordStateInProgress() {
         setImageDrawable(stopRecordDrawable);
         setIconPadding(iconPaddingStop);
     }
 
-    public void displayPhotoState(){
+    public void displayPhotoState() {
         setImageDrawable(takePhotoDrawable);
         setIconPadding(iconPadding);
     }

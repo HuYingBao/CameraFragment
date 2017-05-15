@@ -11,6 +11,7 @@ public abstract class TimerTaskBase {
 
     public interface Callback {
         void setText(String text);
+
         void setTextVisible(boolean visible);
     }
 

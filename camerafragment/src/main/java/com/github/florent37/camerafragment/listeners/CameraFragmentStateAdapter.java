@@ -4,6 +4,7 @@ import java.io.File;
 
 /**
  * Convenience implementation of {@link CameraFragmentStateListener}. Derive from this and only override what you need.
+ *
  * @author Skala
  */
 

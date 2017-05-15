@@ -120,7 +120,7 @@ public class Camera2Controller implements CameraController<String>,
 
     }
 
-    private void setCurrentCameraId(String currentCameraId){
+    private void setCurrentCameraId(String currentCameraId) {
         this.currentCameraId = currentCameraId;
         camera2Manager.setCameraId(currentCameraId);
     }

@@ -16,8 +16,10 @@ public interface CameraFragmentStateListener {
 
     //when the flash is at mode auto
     void onFlashAuto();
+
     //when the flash is at on
     void onFlashOn();
+
     //when the flash is off
     void onFlashOff();
 
@@ -29,8 +31,10 @@ public interface CameraFragmentStateListener {
 
     //when the camera state is "ready to record a video"
     void onRecordStateVideoReadyForRecord();
+
     //when the camera state is "recording a video"
     void onRecordStateVideoInProgress();
+
     //when the camera state is "ready to take a photo"
     void onRecordStatePhoto();
 
@@ -38,5 +42,6 @@ public interface CameraFragmentStateListener {
     void shouldRotateControls(int degrees);
 
     void onStartVideoRecord(File outputFile);
+
     void onStopVideoRecord();
 }

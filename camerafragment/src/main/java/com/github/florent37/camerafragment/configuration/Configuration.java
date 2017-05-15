@@ -149,7 +149,7 @@ public final class Configuration implements Serializable {
             return this;
         }
 
-        public Builder setCamera(@CameraFace int camera){
+        public Builder setCamera(@CameraFace int camera) {
             configuration.cameraFace = camera;
             return this;
         }

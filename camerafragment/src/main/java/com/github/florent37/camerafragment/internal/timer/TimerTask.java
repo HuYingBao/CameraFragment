@@ -20,7 +20,7 @@ public class TimerTask extends TimerTaskBase implements Runnable {
             recordingTimeSeconds = 0;
             recordingTimeMinutes++;
         }
-        if(callback != null) {
+        if (callback != null) {
             callback.setText(
                     String.format("%02d:%02d", recordingTimeMinutes, recordingTimeSeconds));
         }
@@ -31,7 +31,7 @@ public class TimerTask extends TimerTaskBase implements Runnable {
         alive = true;
         recordingTimeMinutes = 0;
         recordingTimeSeconds = 0;
-        if(callback != null) {
+        if (callback != null) {
             callback.setText(
                     String.format("%02d:%02d", recordingTimeMinutes, recordingTimeSeconds));
             callback.setTextVisible(true);
@@ -40,7 +40,7 @@ public class TimerTask extends TimerTaskBase implements Runnable {
     }
 
     public void stop() {
-        if(callback != null){
+        if (callback != null) {
             callback.setTextVisible(false);
         }
         alive = false;

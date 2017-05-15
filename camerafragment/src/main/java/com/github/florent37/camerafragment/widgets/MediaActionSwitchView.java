@@ -59,7 +59,7 @@ public class MediaActionSwitchView extends ImageButton {
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(onMediaActionStateChangeListener != null) {
+                if (onMediaActionStateChangeListener != null) {
                     onMediaActionStateChangeListener.switchAction();
                 }
             }
@@ -71,11 +71,11 @@ public class MediaActionSwitchView extends ImageButton {
         displayActionWillSwitchVideo();
     }
 
-    public void displayActionWillSwitchPhoto(){
+    public void displayActionWillSwitchPhoto() {
         setImageDrawable(photoDrawable);
     }
 
-    public void displayActionWillSwitchVideo(){
+    public void displayActionWillSwitchVideo() {
         setImageDrawable(videoDrawable);
     }
 
