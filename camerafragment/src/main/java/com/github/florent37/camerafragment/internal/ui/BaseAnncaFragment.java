@@ -645,8 +645,8 @@ public abstract class BaseAnncaFragment<CameraId> extends Fragment implements Ca
         if (previewContainer == null || preview == null) return;
         previewContainer.removeAllViews();
         previewContainer.addView(preview);
-
-        previewContainer.setAspectRatio(previewSize.getHeight() / (double) previewSize.getWidth());
+        //TODO 删除横屏异常
+//        previewContainer.setAspectRatio(previewSize.getHeight() / (double) previewSize.getWidth());
     }
 
     protected void setMediaFilePath(final File mediaFile) {
