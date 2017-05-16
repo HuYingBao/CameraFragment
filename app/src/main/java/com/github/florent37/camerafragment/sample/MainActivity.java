@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), "onPhotoTaken " + filePath, Toast.LENGTH_SHORT).show();
                 }
             };
-            cameraFragment.takePhotoOrCaptureVideo(resultListener, "/storage/self/primary", "photo0");
+            cameraFragment.takePhotoOrCaptureVideo(resultListener, null, "photo0");
         }
     }
 

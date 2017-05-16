@@ -40,7 +40,6 @@ import com.github.florent37.camerafragment.internal.timer.TimerTaskBase;
 import com.github.florent37.camerafragment.internal.ui.model.PhotoQualityOption;
 import com.github.florent37.camerafragment.internal.ui.model.VideoQualityOption;
 import com.github.florent37.camerafragment.internal.ui.view.AspectFrameLayout;
-import com.github.florent37.camerafragment.internal.utils.CameraHelper;
 import com.github.florent37.camerafragment.internal.utils.Size;
 import com.github.florent37.camerafragment.internal.utils.Utils;
 import com.github.florent37.camerafragment.listeners.CameraFragmentControlsListener;
@@ -241,7 +240,7 @@ public abstract class BaseAnncaFragment<CameraId> extends Fragment implements Ca
                 configurationProvider.setDeviceDefaultOrientation(Configuration.ORIENTATION_LANDSCAPE);
                 break;
             default:
-                configurationProvider.setDeviceDefaultOrientation(Configuration.ORIENTATION_PORTRAIT);
+                configurationProvider.setDeviceDefaultOrientation(Configuration.ORIENTATION_LANDSCAPE);
                 break;
         }
 
