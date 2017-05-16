@@ -1,11 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.github.florent37.camerafragment.sample">
+          package="com.github.florent37.camerafragment.sample">
 
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.FLASHLIGHT" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
 
     <application
@@ -17,20 +17,20 @@
 
         <activity
             android:name="com.github.florent37.camerafragment.PreviewActivity"
-            android:theme="@style/ThemeFullscreen" />
+            android:theme="@style/ThemeFullscreen"/>
 
         <activity
             android:name="com.github.florent37.camerafragment.sample.MainActivityCustoms"
-            android:theme="@style/ThemeFullscreen" >
+            android:theme="@style/ThemeFullscreen">
         </activity>
 
         <activity
             android:name="com.github.florent37.camerafragment.sample.MainActivity"
-            android:theme="@style/ThemeFullscreen" >
+            android:theme="@style/ThemeFullscreen">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 

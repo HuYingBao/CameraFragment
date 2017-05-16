@@ -29,7 +29,6 @@ import com.github.florent37.camerafragment.configuration.ConfigurationProvider;
 import com.github.florent37.camerafragment.configuration.ConfigurationProviderImpl;
 import com.github.florent37.camerafragment.internal.controller.CameraController;
 import com.github.florent37.camerafragment.internal.controller.impl.Camera1Controller;
-import com.github.florent37.camerafragment.internal.controller.impl.Camera2Controller;
 import com.github.florent37.camerafragment.internal.controller.view.CameraView;
 import com.github.florent37.camerafragment.internal.enums.Camera;
 import com.github.florent37.camerafragment.internal.enums.Flash;
@@ -41,7 +40,6 @@ import com.github.florent37.camerafragment.internal.timer.TimerTaskBase;
 import com.github.florent37.camerafragment.internal.ui.model.PhotoQualityOption;
 import com.github.florent37.camerafragment.internal.ui.model.VideoQualityOption;
 import com.github.florent37.camerafragment.internal.ui.view.AspectFrameLayout;
-import com.github.florent37.camerafragment.internal.utils.CameraHelper;
 import com.github.florent37.camerafragment.internal.utils.Size;
 import com.github.florent37.camerafragment.internal.utils.Utils;
 import com.github.florent37.camerafragment.listeners.CameraFragmentControlsListener;
@@ -223,11 +221,7 @@ public abstract class BaseAnncaFragment<CameraId> extends Fragment implements Ca
             }
         };
 
-        if (CameraHelper.hasCamera2(getContext())) {
-            cameraController = new Camera2Controller(getContext(), cameraView, configurationProvider);
-        } else {
-            cameraController = new Camera1Controller(getContext(), cameraView, configurationProvider);
-        }
+        cameraController = new Camera1Controller(getContext(), cameraView, configurationProvider);
         cameraController.onCreate(savedInstanceState);
 
         //onProcessBundle

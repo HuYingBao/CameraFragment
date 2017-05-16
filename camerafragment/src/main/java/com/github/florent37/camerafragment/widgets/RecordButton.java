@@ -72,25 +72,10 @@ public class RecordButton extends ImageButton {
         displayPhotoState();
     }
 
-    //public void setup(@Configuration.MediaAction int mediaAction) {
-    //    setMediaAction(mediaAction);
-    //}
-
     private void setIconPadding(int paddingDP) {
         int padding = Utils.convertDipToPixels(getContext(), paddingDP);
         setPadding(padding, padding, padding, padding);
     }
-
-    //public void setMediaAction(@Configuration.MediaAction int mediaAction) {
-    //    this.mediaAction = mediaAction;
-    //    if (listener != null) {
-    //        if (Configuration.MEDIA_ACTION_PHOTO == mediaAction) {
-    //            listener.setRecordState(Record.TAKE_PHOTO_STATE);
-    //        } else {
-    //            listener.setRecordState(Record.READY_FOR_RECORD_STATE);
-    //        }
-    //    }
-    //}
 
     public void setRecordButtonListener(@NonNull RecordButtonListener listener) {
         this.listener = listener;

@@ -1,8 +1,6 @@
 package com.github.florent37.camerafragment.internal.utils;
 
-import android.annotation.TargetApi;
 import android.hardware.Camera;
-import android.os.Build;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +24,7 @@ public class Size {
         this.height = height;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+
     public Size(android.util.Size size) {
         this.width = size.getWidth();
         this.height = size.getHeight();
@@ -54,7 +52,7 @@ public class Size {
         this.height = height;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+
     public static List<Size> fromList2(List<android.util.Size> sizes) {
         if (sizes == null) return null;
         List<Size> result = new ArrayList<>(sizes.size());
@@ -78,7 +76,7 @@ public class Size {
         return result;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+
     public static Size[] fromArray2(android.util.Size[] sizes) {
         if (sizes == null) return null;
         Size[] result = new Size[sizes.length];

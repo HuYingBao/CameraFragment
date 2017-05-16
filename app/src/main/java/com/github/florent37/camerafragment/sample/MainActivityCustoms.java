@@ -35,14 +35,21 @@ public class MainActivityCustoms extends AppCompatActivity {
 
     public static final String FRAGMENT_TAG = "camera";
 
-    @BindView(R.id.settings_view) Button settingsView;
-    @BindView(R.id.flash_switch_view) Button flashSwitchView;
-    @BindView(R.id.front_back_camera_switcher) Button cameraSwitchView;
-    @BindView(R.id.record_button) Button recordButton;
-    @BindView(R.id.photo_video_camera_switcher) Button mediaActionSwitchView;
+    @BindView(R.id.settings_view)
+    Button settingsView;
+    @BindView(R.id.flash_switch_view)
+    Button flashSwitchView;
+    @BindView(R.id.front_back_camera_switcher)
+    Button cameraSwitchView;
+    @BindView(R.id.record_button)
+    Button recordButton;
+    @BindView(R.id.photo_video_camera_switcher)
+    Button mediaActionSwitchView;
 
-    @BindView(R.id.cameraLayout) View cameraLayout;
-    @BindView(R.id.addCameraButton) View addCameraButton;
+    @BindView(R.id.cameraLayout)
+    View cameraLayout;
+    @BindView(R.id.addCameraButton)
+    View addCameraButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,7 +166,7 @@ public class MainActivityCustoms extends AppCompatActivity {
     }
 
     @OnClick(R.id.flash_switch_view)
-    public void onFlashSwitcClicked(){
+    public void onFlashSwitcClicked() {
         final CameraFragmentApi cameraFragment = getCameraFragment();
         if (cameraFragment != null) {
             cameraFragment.toggleFlashMode();
@@ -167,7 +174,7 @@ public class MainActivityCustoms extends AppCompatActivity {
     }
 
     @OnClick(R.id.front_back_camera_switcher)
-    public void onSwitchCameraClicked(){
+    public void onSwitchCameraClicked() {
         final CameraFragmentApi cameraFragment = getCameraFragment();
         if (cameraFragment != null) {
             cameraFragment.switchCameraTypeFrontBack();
@@ -175,27 +182,27 @@ public class MainActivityCustoms extends AppCompatActivity {
     }
 
     @OnClick(R.id.record_button)
-    public void onRecordButtonClicked(){
+    public void onRecordButtonClicked() {
         final CameraFragmentApi cameraFragment = getCameraFragment();
         if (cameraFragment != null) {
             cameraFragment.takePhotoOrCaptureVideo(new CameraFragmentResultListener() {
-                @Override
-                public void onVideoRecorded(String filePath) {
+                                                       @Override
+                                                       public void onVideoRecorded(String filePath) {
 
-                }
+                                                       }
 
-                @Override
-                public void onPhotoTaken(byte[] bytes, String filePath) {
+                                                       @Override
+                                                       public void onPhotoTaken(byte[] bytes, String filePath) {
 
-                }
-            },
-            "/storage/self/primary",
-            "photo0");
+                                                       }
+                                                   },
+                    "/storage/self/primary",
+                    "photo0");
         }
     }
 
     @OnClick(R.id.settings_view)
-    public void onSettingsClicked(){
+    public void onSettingsClicked() {
         final CameraFragmentApi cameraFragment = getCameraFragment();
         if (cameraFragment != null) {
             cameraFragment.openSettingDialog();
@@ -203,7 +210,7 @@ public class MainActivityCustoms extends AppCompatActivity {
     }
 
     @OnClick(R.id.photo_video_camera_switcher)
-    public void onMediaActionSwitchClicked(){
+    public void onMediaActionSwitchClicked() {
         final CameraFragmentApi cameraFragment = getCameraFragment();
         if (cameraFragment != null) {
             cameraFragment.switchActionPhotoVideo();
@@ -211,7 +218,7 @@ public class MainActivityCustoms extends AppCompatActivity {
     }
 
     @OnClick(R.id.addCameraButton)
-    public void onAddCameraClicked(){
+    public void onAddCameraClicked() {
         if (Build.VERSION.SDK_INT > 15) {
             final String[] permissions = {
                     Manifest.permission.CAMERA,

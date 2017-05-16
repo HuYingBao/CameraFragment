@@ -1,10 +1,7 @@
 package com.github.florent37.camerafragment.internal.utils;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.hardware.camera2.CameraCharacteristics;
-import android.hardware.camera2.CameraManager;
 import android.media.CamcorderProfile;
 import android.os.Build;
 import android.os.Environment;
@@ -42,36 +39,6 @@ public final class CameraHelper {
                 context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FRONT);
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public static boolean hasCamera2(Context context) {
-        if (context == null) return false;
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) return false;
-        try {
-            CameraManager manager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
-            String[] idList = manager.getCameraIdList();
-            boolean notNull = true;
-            if (idList.length == 0) {
-                notNull = false;
-            } else {
-                for (final String str : idList) {
-                    if (str == null || str.trim().isEmpty()) {
-                        notNull = false;
-                        break;
-                    }
-                    final CameraCharacteristics characteristics = manager.getCameraCharacteristics(str);
-
-                    final int supportLevel = characteristics.get(CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL);
-                    if (supportLevel == CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL_LEGACY) {
-                        notNull = false;
-                        break;
-                    }
-                }
-            }
-            return notNull;
-        } catch (Throwable ignore) {
-            return false;
-        }
-    }
 
     public static File generateStorageDir(Context context, @Nullable String pathToDirectory) {
         File mediaStorageDir = null;
@@ -157,7 +124,7 @@ public final class CameraHelper {
         return result;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+
     public static Size getPictureSize(Size[] sizes, @Configuration.MediaQuality int mediaQuality) {
         if (sizes == null || sizes.length == 0) return null;
 
@@ -272,7 +239,7 @@ public final class CameraHelper {
         return optimalSize;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+
     public static Size getOptimalPreviewSize(Size[] sizes, int width, int height) {
 
         if (sizes == null) return null;
@@ -307,7 +274,7 @@ public final class CameraHelper {
         return optimalSize;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+
     public static Size getSizeWithClosestRatio(Size[] sizes, int width, int height) {
 
         if (sizes == null) return null;
@@ -346,7 +313,7 @@ public final class CameraHelper {
         return optimalSize;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+
     public static Size chooseOptimalSize(Size[] choices, int width, int height, Size aspectRatio) {
         // Collect the supported resolutions that are at least as big as the preview Surface
         List<Size> bigEnough = new ArrayList<>();
@@ -380,7 +347,7 @@ public final class CameraHelper {
         return 8 * maxFileSize / seconds - camcorderProfile.audioBitRate;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+
     public static CamcorderProfile getCamcorderProfile(String cameraId, long maximumFileSize, int minimumDurationInSeconds) {
         if (TextUtils.isEmpty(cameraId)) {
             return null;
@@ -414,7 +381,7 @@ public final class CameraHelper {
         return CameraHelper.getCamcorderProfile(Configuration.MEDIA_QUALITY_LOWEST, currentCameraId);
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+
     public static CamcorderProfile getCamcorderProfile(@Configuration.MediaQuality int mediaQuality, String cameraId) {
         if (TextUtils.isEmpty(cameraId)) {
             return null;
@@ -471,7 +438,7 @@ public final class CameraHelper {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+
     private static class CompareSizesByArea2 implements Comparator<Size> {
         @Override
         public int compare(Size lhs, Size rhs) {

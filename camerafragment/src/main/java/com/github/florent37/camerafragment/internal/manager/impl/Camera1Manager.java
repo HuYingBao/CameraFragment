@@ -164,10 +164,10 @@ public class Camera1Manager extends BaseCameraManager<Integer, SurfaceHolder.Cal
             @Override
             public void run() {
                 setCameraPhotoQuality(camera);
-                camera.takePicture(null, null, new Camera.PictureCallback() {
+                camera.takePicture(null, null, null, new Camera.PictureCallback() {
                     @Override
-                    public void onPictureTaken(byte[] bytes, Camera camera) {
-                        Camera1Manager.this.onPictureTaken(bytes, camera, callback);
+                    public void onPictureTaken(byte[] data, Camera camera) {
+                        Camera1Manager.this.onPictureTaken(data, camera, callback);
                     }
                 });
             }
