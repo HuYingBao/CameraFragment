@@ -2,6 +2,7 @@ package com.github.florent37.camerafragment.sample;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,6 +69,17 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
+
+    protected void initStatusNavigation(Window window) {
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        // status bar颜色设置为透明
+        window.setStatusBarColor(Color.TRANSPARENT);
+    }
+
     @OnClick(R.id.flash_switch_view)
     public void onFlashSwitcClicked() {
         final CameraFragmentApi cameraFragment = getCameraFragment();
@@ -87,19 +100,18 @@ public class MainActivity extends AppCompatActivity {
     public void onRecordButtonClicked() {
         final CameraFragmentApi cameraFragment = getCameraFragment();
         if (cameraFragment != null) {
-            cameraFragment.takePhotoOrCaptureVideo(new CameraFragmentResultAdapter() {
-                                                       @Override
-                                                       public void onVideoRecorded(String filePath) {
-                                                           Toast.makeText(getBaseContext(), "onVideoRecorded " + filePath, Toast.LENGTH_SHORT).show();
-                                                       }
+            CameraFragmentResultAdapter resultListener = new CameraFragmentResultAdapter() {
+                @Override
+                public void onVideoRecorded(String filePath) {
+                    Toast.makeText(getBaseContext(), "onVideoRecorded " + filePath, Toast.LENGTH_SHORT).show();
+                }
 
-                                                       @Override
-                                                       public void onPhotoTaken(byte[] bytes, String filePath) {
-                                                           Toast.makeText(getBaseContext(), "onPhotoTaken " + filePath, Toast.LENGTH_SHORT).show();
-                                                       }
-                                                   },
-                    "/storage/self/primary",
-                    "photo0");
+                @Override
+                public void onPhotoTaken(byte[] bytes, String filePath) {
+                    Toast.makeText(getBaseContext(), "onPhotoTaken " + filePath, Toast.LENGTH_SHORT).show();
+                }
+            };
+            cameraFragment.takePhotoOrCaptureVideo(resultListener, "/storage/self/primary", "photo0");
         }
     }
 
@@ -155,27 +167,12 @@ public class MainActivity extends AppCompatActivity {
         addCameraButton.setVisibility(View.GONE);
         cameraLayout.setVisibility(View.VISIBLE);
 
-        final CameraFragment cameraFragment = CameraFragment.newInstance(new Configuration.Builder()
-                .setCamera(Configuration.CAMERA_FACE_REAR).build());
+        final CameraFragment cameraFragment = CameraFragment.newInstance(new Configuration.Builder().setCamera(Configuration.CAMERA_FACE_REAR).build());
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content, cameraFragment, FRAGMENT_TAG)
                 .commitAllowingStateLoss();
 
         if (cameraFragment != null) {
-            //cameraFragment.setResultListener(new CameraFragmentResultListener() {
-            //    @Override
-            //    public void onVideoRecorded(String filePath) {
-            //        Intent intent = PreviewActivity.newIntentVideo(MainActivity.this, filePath);
-            //        startActivityForResult(intent, REQUEST_PREVIEW_CODE);
-            //    }
-//
-            //    @Override
-            //    public void onPhotoTaken(byte[] bytes, String filePath) {
-            //        Intent intent = PreviewActivity.newIntentPhoto(MainActivity.this, filePath);
-            //        startActivityForResult(intent, REQUEST_PREVIEW_CODE);
-            //    }
-            //});
-
             cameraFragment.setStateListener(new CameraFragmentStateAdapter() {
 
                 @Override

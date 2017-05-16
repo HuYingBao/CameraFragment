@@ -61,6 +61,8 @@ public final class CameraHelper {
 
     public static File getOutputMediaFile(Context context, @Configuration.MediaAction int mediaAction, @Nullable String pathToDirectory, @Nullable String fileName) {
         final File mediaStorageDir = generateStorageDir(context, pathToDirectory);
+
+
         File mediaFile = null;
 
         if (mediaStorageDir != null) {
